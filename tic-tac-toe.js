@@ -11,12 +11,20 @@ window.addEventListener("DOMContentLoaded", function(){
             event.target.classList.add("o-move");
             xTurn = true;
         }
+        checkWinner(event.target)
     })
 
-function checkWinner(id) {
+function checkWinner(div) {
 // Check the id of the last move, compare and check if there's a winner, return x/o/null
 // 2-3 wins - check horiz/vert/opt-diag
-
+    let classes = div.classList
+    //find classes to get row and column
+    //check if all in that row have x/o class
+    //check if all in that column have x/o class
+    let row = Math.floor(div.id.split("-")[1]/3) + 1;
+    let column = (div.id.split("-")[1] % 3) + 1;
+    console.log("row", row);
+    console.log("column", column)
 }
 
 })
