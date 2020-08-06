@@ -16,15 +16,46 @@ window.addEventListener("DOMContentLoaded", function(){
 
 function checkWinner(div) {
 // Check the id of the last move, compare and check if there's a winner, return x/o/null
-// 2-3 wins - check horiz/vert/opt-diag
-    let classes = div.classList
-    //find classes to get row and column
-    //check if all in that row have x/o class
-    //check if all in that column have x/o class
+    // let classes = div.classList
     let row = Math.floor(div.id.split("-")[1]/3) + 1;
     let column = (div.id.split("-")[1] % 3) + 1;
-    console.log("row", row);
-    console.log("column", column)
+    if (checkRows(row)) {
+      console.log("winner");
+    }
+    if (checkColumns(column)) {
+      console.log("column winner!");
+    }
 }
 
+function checkColumns(num) {
+  let searchClass;
+  if (xTurn) {
+    searchClass = "o-move";
+  } else {
+    searchClass = "x-move";
+  }
+  const colNodes = document.querySelectorAll(".col-" + num)
+  for (let i = 0; i < colNodes.length; i++) {
+    if (![...colNodes[i].classList].includes(searchClass)) {
+      return false;
+    };
+  };
+  return true;
+}
+
+function checkRows(num) {
+  let searchClass;
+  if (xTurn) {
+    searchClass = "o-move";
+  } else {
+    searchClass = "x-move";
+  }
+  const rowNodes = document.querySelectorAll(".row-" + num)
+  for (let i = 0; i < rowNodes.length; i++) {
+    if (![...rowNodes[i].classList].includes(searchClass)) {
+      return false;
+    };
+  };
+  return true;
+  }
 })
