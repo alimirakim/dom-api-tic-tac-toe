@@ -18,6 +18,9 @@ window.addEventListener("DOMContentLoaded", function(){
         }
         checkWinner(event.target);
         checkTie();
+        if(document.getElementById("game-status").innerHTML !== ""){
+            enableNewGame();
+        }
     })
 
 function checkWinner(div) {
@@ -32,14 +35,14 @@ function checkWinner(div) {
     if (checkColumns(column, classForWhichToSearch)) {
         document.getElementById("game-status").innerHTML = `Winner: ${classForWhichToSearch.split("-")[0].toUpperCase()}`
     }
-    if(checkDiagnal(classForWhichToSearch)){
+    if(checkDiagonal(classForWhichToSearch)){
         document.getElementById("game-status").innerHTML = `Winner: ${classForWhichToSearch.split("-")[0].toUpperCase()}`
     }
 }
 
 function checkTie(){
     if(counter === 9){
-        document.getElementById("game-status").innerHTML = `No Winner`;
+        document.getElementById("game-status").innerHTML = `Winner: None`;
     } else{
         return false;
     }
@@ -55,8 +58,7 @@ function searchClass(){
     return searchClass
 }
 
-function checkDiagnal(searchClass){
-    console.log("checking diag for", searchClass)
+function checkDiagonal(searchClass){
     if(![...document.getElementById("square-4").classList].includes(searchClass)){
         return false
     } else if([...document.getElementById("square-0").classList].includes(searchClass) && [...document.getElementById("square-8").classList].includes(searchClass)){
@@ -86,4 +88,16 @@ function checkRows(num, searchClass) {
   };
   return true;
   }
+
+
+
+// NEW GAME
+
+function enableNewGame() {
+  document.getElementById("new-game").disabled = false;
+}
+
+function newGame() {}
+
+
 })
