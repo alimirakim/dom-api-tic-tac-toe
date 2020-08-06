@@ -39,7 +39,7 @@ function checkWinner(div) {
 
 function checkTie(){
     if(counter === 9){
-        return true
+        document.getElementById("game-status").innerHTML = `No Winner`;
     } else{
         return false;
     }
