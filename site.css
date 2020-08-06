@@ -63,3 +63,11 @@ button {
   height: 130px;
   width: 130px;
 }
+
+.x-move{
+  background-image: url("player-x.svg");
+}
+
+.o-move{
+  background-image: url("player-o.svg");
+}
